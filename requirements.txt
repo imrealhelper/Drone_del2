@@ -85,7 +85,6 @@ toml==0.10.2
 toolz==0.12.1
 trio==0.26.2
 trio-websocket==0.11.1
-typing_extensions==4.8.0
 tzdata==2024.1
 tzlocal==5.2
 urllib3==2.2.1
