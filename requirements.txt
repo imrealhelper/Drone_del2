@@ -83,7 +83,6 @@ sympy==1.11.1
 tenacity==8.2.3
 toml==0.10.2
 toolz==0.12.1
-tornado==6.3.4
 traitlets==5.12.2
 trio==0.26.2
 trio-websocket==0.11.1
