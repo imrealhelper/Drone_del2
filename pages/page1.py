@@ -86,11 +86,11 @@ def show_tracking_details(order):
             'label': ['스테이션 위치']
         })
         
-        #t.map(map_data)
+        st.map(map_data)
         
         # Optionally, display the data in a table
-        st.subheader("지도에 표시된 위치")
-        st.table(map_data)
+        #st.subheader("지도에 표시된 위치")
+        #st.table(map_data)
 
 def get_current_kst():
     """Returns the current Korean Standard Time (KST)."""
