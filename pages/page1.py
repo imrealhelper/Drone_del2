@@ -54,6 +54,8 @@ def generate_qr_code(data):
     img_str = base64.b64encode(buffered.getvalue()).decode()
     return f"data:image/png;base64,{img_str}"
 
+
+
 @st.dialog("배송 상세 정보", width="large")
 def show_tracking_details(order):
     """Displays the detailed delivery information in a modal dialog."""
@@ -68,7 +70,7 @@ def show_tracking_details(order):
     if order['status'] == "배달 완료":
         st.markdown("---")
         st.markdown("#### 배송 확인 QR 코드")
-        qr_data = f"물류 스테이션 번호: {order['tracking_number']}"
+        qr_data =order['qr_number']
         qr_data_uri = generate_qr_code(qr_data)
         st.markdown(f"<img src='{qr_data_uri}' width='200' alt='QR Code'>", unsafe_allow_html=True)
         
@@ -189,6 +191,7 @@ def user_page():
             "estimated_delivery": (current_kst + timedelta(days=2)).strftime('%Y-%m-%d'),
             "items": ["나이키 양말"],
             "tracking_number": "1Z999AA10123456784",
+            "qr_number":0,
             "tracking_details": update_tracking_dates([
                 {"date": "2024-11-18 09:30", "location": "서울 물류센터", "status": "상품 접수"},
                 {"date": "2024-03-17 13:45", "location": "인천 드론 배송", "status": "출고 준비"},
@@ -202,7 +205,8 @@ def user_page():
             "status": "배달 완료",
             "estimated_delivery": (current_kst - timedelta(days=1)).strftime('%Y-%m-%d'),
             "items": ["F-35 피규어"],
-            "tracking_number": "1Z999AA10123456785",
+            "tracking_number": "1Z999AA10123456783",
+            "qr_number":1,
             "tracking_details": update_tracking_dates([
                 {"date": "2024-03-14 11:20", "location": "용현동 판매자", "status": "상품 발송"},
                 {"date": "2024-03-15 09:45", "location": "인천 드론 배송", "status": "배송 중"},
@@ -217,6 +221,7 @@ def user_page():
             "estimated_delivery": current_kst.strftime('%Y-%m-%d'),
             "items": ["노트북 파우치"],
             "tracking_number": "1Z999AA10123456786",
+            "qr_number":2,
             "tracking_details": update_tracking_dates([
                 {"date": "2024-03-15 10:00", "location": "주문 취소", "status": "고객 요청 취소"}
             ], base_date)
